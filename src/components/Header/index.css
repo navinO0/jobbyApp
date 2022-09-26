@@ -1,0 +1,38 @@
+.header-website-logo {
+  height: 30px;
+}
+
+.header-main-container {
+  background-color: #272727;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 30px;
+}
+.link-item {
+  text-decoration: none;
+}
+.header-image-container {
+}
+.home-job-route-nav-text-container {
+  display: flex;
+}
+.header-nav-item-text {
+  margin-right: 20px;
+  color: #f1f5f9;
+  font-weight: 400;
+  font-family: 'Roboto';
+  font-size: 13px;
+}
+.header-logout-btn {
+  background-color: #6366f1;
+  color: #ffffff;
+  font-family: 'Roboto';
+  padding: 6px;
+  border-style: none;
+  width: 100px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
