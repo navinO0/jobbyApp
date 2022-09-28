@@ -22,7 +22,7 @@ const SimilarJobCard = props => {
         <div className="similar-company-logo">
           <img
             src={companyLogoUrl}
-            alt="similar-company logo"
+            alt="similar job company logo"
             className="similar-company-logo-img"
           />
         </div>

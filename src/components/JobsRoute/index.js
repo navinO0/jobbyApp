@@ -110,7 +110,7 @@ class JobsRoute extends Component {
   }
 
   renderReactLoader = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
     </div>
   )
@@ -179,6 +179,27 @@ class JobsRoute extends Component {
       <div className="jobs-super-container">
         <Header />
         <div className="jobs-main-container">
+          <form
+            onSubmit={this.onClickSearchinput}
+            className="sm-search-container"
+          >
+            <input
+              onChange={this.onChangeSearch}
+              value={searchinput}
+              type="search"
+              placeholder="Search"
+              className="search-input"
+            />
+            <div className="search-icon-container">
+              <button
+                type="submit"
+                testid="searchButton"
+                className="search-button"
+              >
+                <BiSearch className="search-icon" />
+              </button>
+            </div>
+          </form>
           <ProfileCard
             onClickMinSalary={this.onClickMinSalary}
             onUpdateJobType={this.onUpdateJobType}
@@ -192,6 +213,7 @@ class JobsRoute extends Component {
                 onChange={this.onChangeSearch}
                 value={searchinput}
                 type="search"
+                placeholder="Search"
                 className="search-input"
               />
               <div className="search-icon-container">

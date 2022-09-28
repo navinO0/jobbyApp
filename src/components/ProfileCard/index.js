@@ -98,7 +98,7 @@ class ProfileCard extends Component {
     return (
       <div className="profile-main-container">
         <div className="profile-img-container">
-          <img src={profileImageUrl} alt={name} className="profile-img" />
+          <img src={profileImageUrl} alt="profile" className="profile-img" />
         </div>
         <h1 className="profile-name">{name}</h1>
         <p className="short-bio">{shortBio}</p>
@@ -113,7 +113,7 @@ class ProfileCard extends Component {
   )
 
   renderReactLoader = () => (
-    <div className="loader-container">
+    <div className="loader-container" testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
     </div>
   )
@@ -139,11 +139,13 @@ class ProfileCard extends Component {
         <div className="render-profile-card-container">{this.renderUies()}</div>
 
         <hr className="hr-line" />
+        <h1 className="container-headings">Salary Range</h1>
         <div className="filters-container">
           {employmentTypesList.map(eachOne => (
             <div className="inputs-container">
               <input
                 type="checkbox"
+                key={eachOne.employmentTypeId}
                 id={eachOne.employmentTypeId}
                 onChange={this.onClickJobType}
                 value={eachOne.employmentTypeId}
@@ -160,7 +162,7 @@ class ProfileCard extends Component {
           ))}
           <hr className="hr-line" />
           {salaryRangesList.map(eachOne => (
-            <div className="inputs-container">
+            <div key={eachOne.salaryRangeId} className="inputs-container">
               <input
                 type="radio"
                 id={eachOne.salaryRangeId}

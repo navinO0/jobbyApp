@@ -40,3 +40,25 @@
 .link-item {
   text-decoration: none;
 }
+
+@media (max-width: 576px) {
+  .content-container {
+    width: 100%;
+    margin-left: 20px;
+
+    margin-top: 20px;
+  }
+  .main-container {
+    height: 89%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .tagline {
+    color: #ffffff;
+    font-family: 'Roboto';
+    font-size: 45px;
+    font-weight: 500;
+  }
+}

@@ -35,7 +35,7 @@ class LoginForm extends Component {
       const response = await fetch(url, options)
       const data = await response.json()
       if (response.ok) {
-        Cookies.set('jwtToken', data.jwt_token, {expires: 30})
+        Cookies.set('jwt_token', data.jwt_token, {expires: 30})
         history.replace('/')
       } else {
         this.setState({errorMessage: data.error_msg})
@@ -57,7 +57,7 @@ class LoginForm extends Component {
     return (
       <div className="login-credentials-container">
         <label className="label" htmlFor="userName">
-          USER NAME
+          USERNAME
         </label>
         <br />
         <input
@@ -65,7 +65,7 @@ class LoginForm extends Component {
           onBlur={this.onBlurUerName}
           placeholder="Username"
           id="userName"
-          type="input"
+          type="text"
           onChange={this.onChangeUserName}
           value={username}
         />
@@ -115,7 +115,7 @@ class LoginForm extends Component {
 
   render() {
     const {errorMessage} = this.state
-    const Token = Cookies.get('jwtToken')
+    const Token = Cookies.get('jwt_token')
     if (Token !== undefined) {
       return <Redirect to="/" />
     }
@@ -135,7 +135,7 @@ class LoginForm extends Component {
             <button type="submit" className="submit-button">
               Login
             </button>
-            <p className="error-message">{errorMessage}</p>
+            <p className="error-message">*{errorMessage}</p>
           </form>
         </div>
       </>

@@ -7,6 +7,18 @@
   margin-right: 15px;
   min-width: 250px;
 }
+
+@media (max-width: 576px) {
+  .list-item-container-similar-Job-card {
+    background-color: #272727;
+    padding: 25px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    width: 100%;
+
+    min-width: 250px;
+  }
+}
 .similar-company-img-name-star-container {
   display: flex;
   align-items: center;

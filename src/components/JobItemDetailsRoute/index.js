@@ -93,7 +93,7 @@ class JobsItemDetailsRoute extends Component {
   }
 
   renderReactLoader = () => (
-    <div className="job-details-loader-container">
+    <div className="job-details-loader-container" testid="loader">
       <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
     </div>
   )
@@ -142,7 +142,7 @@ class JobsItemDetailsRoute extends Component {
               <div className="company-logo">
                 <img
                   src={companyLogoUrl}
-                  alt="company logo"
+                  alt="job details company logo"
                   className="company-logo-img"
                 />
               </div>
@@ -197,7 +197,7 @@ class JobsItemDetailsRoute extends Component {
                   <img
                     src={lifeAtCompany.imageUrl}
                     alt="life at company"
-                    className="life-at-img"
+                    className="life at company"
                   />
                 </div>
               </div>

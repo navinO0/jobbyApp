@@ -1,0 +1,25 @@
+.failure-view-description {
+  color: #cbd5e1;
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 400;
+  text-align: center;
+}
+.failure-view-title {
+  color: #f8fafc;
+  font-family: 'Roboto';
+  font-weight: 400;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.failure-view-img {
+  height: 250px;
+}
+.not-found-failure-viw-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #000000;
+}
