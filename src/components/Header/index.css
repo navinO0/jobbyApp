@@ -77,7 +77,7 @@
   .home-job-route-nav-text-container {
     display: flex;
     justify-content: space-between;
-
+    list-style: none;
     width: 160px;
     align-items: center;
   }

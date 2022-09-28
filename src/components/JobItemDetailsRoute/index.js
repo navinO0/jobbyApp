@@ -4,6 +4,7 @@ import Cookie from 'js-cookie'
 import {IoLocationSharp} from 'react-icons/io5'
 import {MdLocalPostOffice} from 'react-icons/md'
 import {AiTwotoneStar} from 'react-icons/ai'
+import {FiExternalLink} from 'react-icons/fi'
 
 import Header from '../Header/index'
 
@@ -32,9 +33,8 @@ class JobsItemDetailsRoute extends Component {
   }
 
   getEachJobDetails = async () => {
-    console.log(this.props)
     this.setState({apistatus: getApiStatus.inProgress})
-    const Token = Cookie.get('jwtToken')
+    const Token = Cookie.get('jwt_token')
     const history = this.props
     const {match} = history
     const {params} = match
@@ -58,6 +58,7 @@ class JobsItemDetailsRoute extends Component {
         location: data.job_details.location,
         packagePerAnnum: data.job_details.package_per_annum,
         rating: data.job_details.rating,
+        title: data.job_details.title,
       }
       const updatedSimilarJobs = data.job_details.skills.map(each => ({
         imageUrl: each.image_url,
@@ -65,12 +66,12 @@ class JobsItemDetailsRoute extends Component {
       }))
       const updatedConjuSkills = data.similar_jobs.map(eachOne => ({
         companyLogoUrl: eachOne.company_logo_url,
+        title: eachOne.title,
         employmentType: eachOne.employment_type,
         id: eachOne.id,
         jobDescription: eachOne.job_description,
         location: eachOne.location,
         rating: eachOne.rating,
-        title: eachOne.title,
       }))
       const lifeAtCompanyUpdated = {
         description: data.job_details.life_at_company.description,
@@ -123,11 +124,12 @@ class JobsItemDetailsRoute extends Component {
 
   renderJobDetails = () => {
     const {jobDetails, similarJobs, lifeAtCompany, conjuSkills} = this.state
+
     const {
       companyLogoUrl,
       companyWebsiteUrl,
       employmentType,
-      id,
+      title,
       jobDescription,
       location,
       packagePerAnnum,
@@ -147,7 +149,7 @@ class JobsItemDetailsRoute extends Component {
                 />
               </div>
               <div className="star-rating-title-container">
-                <p className="company-name">title</p>
+                <h1 className="company-name">{title}</h1>
                 <div className="star-rating-container">
                   <AiTwotoneStar className="star-icon" />
                   <p className="rating-in-num">{rating}</p>
@@ -170,7 +172,13 @@ class JobsItemDetailsRoute extends Component {
               </div>
               <hr className="hr-line" />
               <div className="description-container">
-                <p className="job-card-description-heading">Description</p>
+                <div className="description-link-container">
+                  <h1 className="job-card-description-heading">Description</h1>
+                  <a href={companyWebsiteUrl} className="company-url-anchor">
+                    Visit
+                    <FiExternalLink className="link-icon" />
+                  </a>
+                </div>
                 <p className="job-card-description">{jobDescription}</p>
               </div>
               <div className="skills-container">
@@ -204,6 +212,7 @@ class JobsItemDetailsRoute extends Component {
             </div>
           </div>
           <div className="similar-jobs-container">
+            <h1 className="container-headings">Similar Jobs</h1>
             <ul className="similar-jobs-list-container">
               {conjuSkills.map(eachOne => (
                 <SimilarJobCard key={eachOne.id} eachOne={eachOne} />

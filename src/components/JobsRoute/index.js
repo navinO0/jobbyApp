@@ -39,7 +39,7 @@ class JobsRoute extends Component {
     const url = `https://apis.ccbp.in/jobs?employment_type=${jobType.join(
       ',',
     )}&minimum_package=${minsalary}&search=${searchinput}`
-    console.log(url)
+
     const jwtToken = Cookie.get('jwtToken')
     const options = {
       headers: {
@@ -77,13 +77,11 @@ class JobsRoute extends Component {
   onUpdateJobType = jobTypeclicked => {
     const {jobType} = this.state
 
-    let updatedList = []
     if (jobType.includes(jobTypeclicked)) {
       const filteredJobType = jobType.filter(
         eachOne => eachOne !== jobTypeclicked,
       )
       this.setState({jobType: filteredJobType}, this.getJobDetails)
-      updatedList = filteredJobType
     } else {
       this.setState({jobType: [...jobType, jobTypeclicked]}, this.getJobDetails)
     }
@@ -94,7 +92,6 @@ class JobsRoute extends Component {
   }
 
   onClickSearchinput = event => {
-    event.preventDefault()
     this.getJobDetails()
   }
 
@@ -174,7 +171,7 @@ class JobsRoute extends Component {
 
   render() {
     const {searchinput, minsalary, jobType} = this.state
-    console.log(jobType.join(','))
+
     return (
       <div className="jobs-super-container">
         <Header />
@@ -191,11 +188,7 @@ class JobsRoute extends Component {
               className="search-input"
             />
             <div className="search-icon-container">
-              <button
-                type="submit"
-                testid="searchButton"
-                className="search-button"
-              >
+              <button type="submit" className="search-button">
                 <BiSearch className="search-icon" />
               </button>
             </div>
@@ -205,10 +198,7 @@ class JobsRoute extends Component {
             onUpdateJobType={this.onUpdateJobType}
           />
           <div className="list-super-container">
-            <form
-              onSubmit={this.onClickSearchinput}
-              className="search-container"
-            >
+            <form className="search-container">
               <input
                 onChange={this.onChangeSearch}
                 value={searchinput}
@@ -217,7 +207,12 @@ class JobsRoute extends Component {
                 className="search-input"
               />
               <div className="search-icon-container">
-                <button type="submit" className="search-button">
+                <button
+                  type="button"
+                  testid="searchButton"
+                  onClick={this.onClickSearchinput}
+                  className="search-button"
+                >
                   <BiSearch className="search-icon" />
                 </button>
               </div>

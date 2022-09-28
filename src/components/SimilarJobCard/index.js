@@ -27,7 +27,7 @@ const SimilarJobCard = props => {
           />
         </div>
         <div className="similar-star-rating-title-container">
-          <p className="similar-company-name">{title}</p>
+          <h1 className="similar-company-name">{title}</h1>
           <div className="similar-star-rating-container">
             <AiTwotoneStar className="similar-star-icon" />
             <p className="similar-rating-in-num">{rating}</p>
@@ -36,7 +36,7 @@ const SimilarJobCard = props => {
       </div>
       <div>
         <div className="similar-description-container">
-          <p className="similar-job-card-description-heading">Description</p>
+          <h1 className="similar-job-card-description-heading">Description</h1>
           <p className="similar-job-card-description">{jobDescription}</p>
         </div>
         <div className="similar-location-job-type-salary-container">

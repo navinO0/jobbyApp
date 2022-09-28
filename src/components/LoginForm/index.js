@@ -38,7 +38,7 @@ class LoginForm extends Component {
         Cookies.set('jwt_token', data.jwt_token, {expires: 30})
         history.replace('/')
       } else {
-        this.setState({errorMessage: data.error_msg})
+        this.setState({errorMessage: `*${data.error_msg}`})
       }
     }
   }
@@ -70,7 +70,7 @@ class LoginForm extends Component {
           value={username}
         />
         <br />
-        <p className={validUser}>requred</p>
+        <p className={validUser}>*required</p>
       </div>
     )
   }
@@ -108,7 +108,7 @@ class LoginForm extends Component {
           onChange={this.onChangePassword}
         />
         <br />
-        <p className={validpass}>requred</p>
+        <p className={validpass}>*required</p>
       </div>
     )
   }
@@ -135,7 +135,7 @@ class LoginForm extends Component {
             <button type="submit" className="submit-button">
               Login
             </button>
-            <p className="error-message">*{errorMessage}</p>
+            <p className="error-message">{errorMessage}</p>
           </form>
         </div>
       </>

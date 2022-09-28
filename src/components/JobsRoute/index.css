@@ -125,6 +125,13 @@
   .search-container {
     display: none;
   }
+  .loader-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 .search-input {
   background-color: #000000;

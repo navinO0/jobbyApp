@@ -55,10 +55,14 @@ class ProfileCard extends Component {
     this.getProfileDetails()
   }
 
+  onClickRetryBtn = () => {
+    this.getProfileDetails()
+  }
+
   getProfileDetails = async () => {
     this.setState({apistatus: getApiStatus.inProgress})
     const url = 'https://apis.ccbp.in/profile'
-    const Token = Cookie.get('jwtToken')
+    const Token = Cookie.get('jwt_token')
     const options = {
       headers: {
         Authorization: `Bearer ${Token}`,
@@ -107,7 +111,11 @@ class ProfileCard extends Component {
   }
 
   renderFailureView = () => (
-    <button type="button" className="profile-return-btn">
+    <button
+      type="button"
+      onClick={this.onClickRetryBtn}
+      className="profile-return-btn"
+    >
       Retry
     </button>
   )
@@ -139,43 +147,50 @@ class ProfileCard extends Component {
         <div className="render-profile-card-container">{this.renderUies()}</div>
 
         <hr className="hr-line" />
-        <h1 className="container-headings">Salary Range</h1>
+        <h1 className="container-headings">Type of Employment</h1>
         <div className="filters-container">
-          {employmentTypesList.map(eachOne => (
-            <div className="inputs-container">
-              <input
-                type="checkbox"
-                key={eachOne.employmentTypeId}
-                id={eachOne.employmentTypeId}
-                onChange={this.onClickJobType}
-                value={eachOne.employmentTypeId}
-                name="employementType"
-              />
-              <label
-                htmlFor={eachOne.employmentTypeId}
-                className="label-job-card"
-              >
-                {eachOne.label}
-              </label>
-              <br />
-            </div>
-          ))}
+          <ul className="employment-type-ul-list-container">
+            {employmentTypesList.map(eachOne => (
+              <li key={eachOne.employmentTypeId} className="inputs-container">
+                <input
+                  type="checkbox"
+                  id={eachOne.employmentTypeId}
+                  onChange={this.onClickJobType}
+                  value={eachOne.employmentTypeId}
+                  name="employementType"
+                />
+                <label
+                  htmlFor={eachOne.employmentTypeId}
+                  className="label-job-card"
+                >
+                  {eachOne.label}
+                </label>
+                <br />
+              </li>
+            ))}
+          </ul>
           <hr className="hr-line" />
-          {salaryRangesList.map(eachOne => (
-            <div key={eachOne.salaryRangeId} className="inputs-container">
-              <input
-                type="radio"
-                id={eachOne.salaryRangeId}
-                value={eachOne.salaryRangeId}
-                onClick={this.onClickMinSalary}
-                name="salaryRange"
-              />
-              <label htmlFor={eachOne.salaryRangeId} className="label-job-card">
-                {eachOne.label}
-              </label>
-              <br />
-            </div>
-          ))}
+          <h1 className="container-headings">Salary Range</h1>
+          <ul className="salary-ul-list-container">
+            {salaryRangesList.map(eachOne => (
+              <div key={eachOne.salaryRangeId} className="inputs-container">
+                <input
+                  type="radio"
+                  id={eachOne.salaryRangeId}
+                  value={eachOne.salaryRangeId}
+                  onClick={this.onClickMinSalary}
+                  name="salaryRange"
+                />
+                <label
+                  htmlFor={eachOne.salaryRangeId}
+                  className="label-job-card"
+                >
+                  {eachOne.label}
+                </label>
+                <br />
+              </div>
+            ))}
+          </ul>
         </div>
       </div>
     )
